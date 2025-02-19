@@ -6,7 +6,6 @@
 *.user
 *.userosscache
 *.sln.docstates
-AssistenteGemini/beeK.txt
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
