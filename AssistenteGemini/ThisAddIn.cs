@@ -105,10 +105,6 @@ namespace AssistenteGemini
 
 		public static void inserisciTesto(string testo)
 		{
-			//		Microsoft.Office.Interop.Word.Range rng = ;
-			//	rng.Text = testo;
-
-
 			Microsoft.Office.Interop.Word.Selection currentSelection = _sinstance.Application.Selection;
 
 			// Store the user's current Overtype selection
@@ -124,12 +120,11 @@ namespace AssistenteGemini
 			if (currentSelection.Type == Microsoft.Office.Interop.Word.WdSelectionType.wdSelectionIP)
 			{
 				currentSelection.TypeText(testo);
-				currentSelection.TypeParagraph();
 			}
 			else
 				if (currentSelection.Type == Microsoft.Office.Interop.Word.WdSelectionType.wdSelectionNormal)
 			{
-				// Move to start of selection.
+				// Delete selection.
 				if (_sinstance.Application.Options.ReplaceSelection)
 				{
 					object direction = Microsoft.Office.Interop.Word.WdCollapseDirection.wdCollapseStart;
@@ -137,11 +132,9 @@ namespace AssistenteGemini
 
 				}
 				currentSelection.TypeText(testo);
-				currentSelection.TypeParagraph();
 			}
 			else
 			{
-				// Do nothing.
 			}
 
 			// Restore the user's Overtype selection
