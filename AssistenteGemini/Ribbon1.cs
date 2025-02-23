@@ -1,5 +1,4 @@
 ﻿using Microsoft.Office.Tools.Ribbon;
-using System.Windows.Forms;
 
 namespace AssistenteGemini
 {
@@ -12,9 +11,15 @@ namespace AssistenteGemini
 
 		private void adatta_Click(object sender, RibbonControlEventArgs e)
 		{
-			//	System.Threading.Tasks.Task<string> task = new ThisAddIn().SendRequestAndGetResponse("ciaoooo");
-
-			MessageBox.Show("prova 123");
+			string domanda = "traduci in inglese il testo: ";
+			string risposta = ThisAddIn.chiediAgemini(domanda);
+			this.button1.Label = risposta;
 		}
+		private void scelto_Click(object sender, RibbonControlEventArgs e)
+		{
+			RibbonButton bottone = (RibbonButton)sender;
+			ThisAddIn.inserisciTesto(bottone.Label);
+		}
+
 	}
 }

@@ -14,8 +14,14 @@ namespace AssistenteGemini
 {
 	public partial class ThisAddIn
 	{
+		public static ThisAddIn _sinstance;
+
 		private void ThisAddIn_Startup(object sender, System.EventArgs e)
 		{
+			if (_sinstance == null)
+			{
+				_sinstance = this;
+			}
 		}
 
 		private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
@@ -82,11 +88,67 @@ namespace AssistenteGemini
 			}
 		}
 
-		public void prova()
+		public static string chiediAgemini(string domanda)
 		{
-			Microsoft.Office.Interop.Word.Range rng = this.Application.ActiveDocument.Range(0, 0);
-			rng.Text = "New Text";
+			string g = "" + domanda;
+			Microsoft.Office.Interop.Word.Selection currentSelection = _sinstance.Application.Selection;
+			if (_sinstance.Application.Options.ReplaceSelection)
+			{
+				object direction = Microsoft.Office.Interop.Word.WdCollapseDirection.wdCollapseStart;
+				g = g + currentSelection.Text;
+
+			}
+
+			string ss = _sinstance.SendRequestAndGetResponse(g).Result;
+			return ss;
 		}
+
+		public static void inserisciTesto(string testo)
+		{
+			//		Microsoft.Office.Interop.Word.Range rng = ;
+			//	rng.Text = testo;
+
+
+			Microsoft.Office.Interop.Word.Selection currentSelection = _sinstance.Application.Selection;
+
+			// Store the user's current Overtype selection
+			bool userOvertype = _sinstance.Application.Options.Overtype;
+
+			// Make sure Overtype is turned off.
+			if (_sinstance.Application.Options.Overtype)
+			{
+				_sinstance.Application.Options.Overtype = false;
+			}
+
+			// Test to see if selection is an insertion point.
+			if (currentSelection.Type == Microsoft.Office.Interop.Word.WdSelectionType.wdSelectionIP)
+			{
+				currentSelection.TypeText(testo);
+				currentSelection.TypeParagraph();
+			}
+			else
+				if (currentSelection.Type == Microsoft.Office.Interop.Word.WdSelectionType.wdSelectionNormal)
+			{
+				// Move to start of selection.
+				if (_sinstance.Application.Options.ReplaceSelection)
+				{
+					object direction = Microsoft.Office.Interop.Word.WdCollapseDirection.wdCollapseStart;
+					currentSelection.Delete(ref direction);
+
+				}
+				currentSelection.TypeText(testo);
+				currentSelection.TypeParagraph();
+			}
+			else
+			{
+				// Do nothing.
+			}
+
+			// Restore the user's Overtype selection
+			_sinstance.Application.Options.Overtype = userOvertype;
+
+		}
+
 	}
 }
 
