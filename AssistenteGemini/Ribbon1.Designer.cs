@@ -37,21 +37,19 @@ namespace AssistenteGemini
 		{
 			this.tab1 = this.Factory.CreateRibbonTab();
 			this.group1 = this.Factory.CreateRibbonGroup();
-			this.adatta = this.Factory.CreateRibbonButton();
 			this.group2 = this.Factory.CreateRibbonGroup();
+			this.group3 = this.Factory.CreateRibbonGroup();
+			this.group4 = this.Factory.CreateRibbonGroup();
+			this.adatta = this.Factory.CreateRibbonButton();
 			this.button1 = this.Factory.CreateRibbonButton();
 			this.button2 = this.Factory.CreateRibbonButton();
 			this.button3 = this.Factory.CreateRibbonButton();
 			this.button4 = this.Factory.CreateRibbonButton();
 			this.button5 = this.Factory.CreateRibbonButton();
-			this.group3 = this.Factory.CreateRibbonGroup();
 			this.button6 = this.Factory.CreateRibbonButton();
-			this.group4 = this.Factory.CreateRibbonGroup();
 			this.button7 = this.Factory.CreateRibbonButton();
 			this.button8 = this.Factory.CreateRibbonButton();
 			this.button9 = this.Factory.CreateRibbonButton();
-			this.button10 = this.Factory.CreateRibbonButton();
-			this.button11 = this.Factory.CreateRibbonButton();
 			this.tab1.SuspendLayout();
 			this.group1.SuspendLayout();
 			this.group2.SuspendLayout();
@@ -75,14 +73,6 @@ namespace AssistenteGemini
 			this.group1.Label = "Sinonimi";
 			this.group1.Name = "group1";
 			// 
-			// adatta
-			// 
-			this.adatta.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-			this.adatta.Label = "CERCA";
-			this.adatta.Name = "adatta";
-			this.adatta.ShowImage = true;
-			this.adatta.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.sinonimi_Click);
-			// 
 			// group2
 			// 
 			this.group2.Items.Add(this.button1);
@@ -92,6 +82,28 @@ namespace AssistenteGemini
 			this.group2.Items.Add(this.button5);
 			this.group2.Label = "Risultati";
 			this.group2.Name = "group2";
+			// 
+			// group3
+			// 
+			this.group3.Items.Add(this.button6);
+			this.group3.Label = "Riscrivi";
+			this.group3.Name = "group3";
+			// 
+			// group4
+			// 
+			this.group4.Items.Add(this.button7);
+			this.group4.Items.Add(this.button8);
+			this.group4.Items.Add(this.button9);
+			this.group4.Label = "Risultati";
+			this.group4.Name = "group4";
+			// 
+			// adatta
+			// 
+			this.adatta.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+			this.adatta.Label = "CERCA";
+			this.adatta.Name = "adatta";
+			this.adatta.ShowImage = true;
+			this.adatta.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.sinonimi_Click);
 			// 
 			// button1
 			// 
@@ -133,12 +145,6 @@ namespace AssistenteGemini
 			this.button5.ShowImage = true;
 			this.button5.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click);
 			// 
-			// group3
-			// 
-			this.group3.Items.Add(this.button6);
-			this.group3.Label = "Riscrivi";
-			this.group3.Name = "group3";
-			// 
 			// button6
 			// 
 			this.button6.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -146,16 +152,6 @@ namespace AssistenteGemini
 			this.button6.Name = "button6";
 			this.button6.ShowImage = true;
 			this.button6.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.riscrivi_Click);
-			// 
-			// group4
-			// 
-			this.group4.Items.Add(this.button7);
-			this.group4.Items.Add(this.button8);
-			this.group4.Items.Add(this.button9);
-			this.group4.Items.Add(this.button10);
-			this.group4.Items.Add(this.button11);
-			this.group4.Label = "Risultati";
-			this.group4.Name = "group4";
 			// 
 			// button7
 			// 
@@ -180,22 +176,6 @@ namespace AssistenteGemini
 			this.button9.Name = "button9";
 			this.button9.ShowImage = true;
 			this.button9.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click);
-			// 
-			// button10
-			// 
-			this.button10.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-			this.button10.Label = "Prova di testo";
-			this.button10.Name = "button10";
-			this.button10.ShowImage = true;
-			this.button10.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click);
-			// 
-			// button11
-			// 
-			this.button11.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-			this.button11.Label = "Prova di testo";
-			this.button11.Name = "button11";
-			this.button11.ShowImage = true;
-			this.button11.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click);
 			// 
 			// Ribbon1
 			// 
@@ -234,8 +214,6 @@ namespace AssistenteGemini
 		internal Microsoft.Office.Tools.Ribbon.RibbonButton button7;
 		internal Microsoft.Office.Tools.Ribbon.RibbonButton button8;
 		internal Microsoft.Office.Tools.Ribbon.RibbonButton button9;
-		internal Microsoft.Office.Tools.Ribbon.RibbonButton button10;
-		internal Microsoft.Office.Tools.Ribbon.RibbonButton button11;
 	}
 
 	partial class ThisRibbonCollection

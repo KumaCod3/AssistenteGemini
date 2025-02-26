@@ -47,27 +47,27 @@ namespace AssistenteGemini
 		public async System.Threading.Tasks.Task<string> SendRequestAndGetResponse(string userInput)
 		{
 			string jsonBody = $@"{{
-                ""contents"": [
-                    {{
-                        ""role"": """",
-                        ""parts"": [
-                            {{
-                                ""text"": ""{userInput}""
-                            }}
-                        ]
-                    }}
-                ],
-                ""generationConfig"": {{
-                    ""temperature"": 0.9,
-                    ""topK"": 50,
-                    ""topP"": 0.95,
-                    ""maxOutputTokens"": 4096,
-                    ""stopSequences"": []
-                }},
-                ""safetySettings"": [
+				""contents"": [
+					{{
+						""role"": """",
+						""parts"": [
+							{{
+								""text"": ""{userInput}""
+							}}
+						]
+					}}
+				],
+				""generationConfig"": {{
+					""temperature"": 0.9,
+					""topK"": 50,
+					""topP"": 0.95,
+					""maxOutputTokens"": 4096,
+					""stopSequences"": []
+				}},
+				""safetySettings"": [
 
-                ]
-            }}";
+				]
+			}}";
 
 			var request = new HttpRequestMessage(HttpMethod.Post, $"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={GEMINI_API_KEY}");
 			request.Content = new StringContent(jsonBody, Encoding.UTF8);
