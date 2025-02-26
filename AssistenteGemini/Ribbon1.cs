@@ -4,6 +4,8 @@ namespace AssistenteGemini
 {
 	public partial class Ribbon1
 	{
+
+		public static string promptMod = "Riscrivi il testo con uno stile ricercato utilizzando termini desueti e arcaici. ";
 		private void Ribbon1_Load(object sender, RibbonUIEventArgs e)
 		{
 
@@ -27,11 +29,18 @@ namespace AssistenteGemini
 			this.button5.Label = tutt[4];
 		}
 
+		private void modProm_Click(object sender, RibbonControlEventArgs e)
+		{
+			Form1 mod = new Form1();
+			mod.Visible = true;
+			mod.Activate();
+		}
+
 		private void riscrivi_Click(object sender, RibbonControlEventArgs e)
 		{
-			string domanda = "Riscrivi il testo con uno stile ricercato utilizzando termini desueti e arcaici. Proponi 3 alternative il più possibile diversificate in termini di lessico, ma sempre rispettando le linee guida iniziali. Fornisci solo le alternative senza titoli, introduzioni o spiegazioni o elenchi, separale con  ; ";
+			string domanda = promptMod + " Proponi 3 alternative il più possibile diversificate in termini di lessico, ma sempre rispettando le linee guida iniziali. Fornisci solo le alternative senza titoli, introduzioni o spiegazioni o elenchi, separale con  ; ";
 			string risposta = ThisAddIn.chiediAgemini(domanda);
-			risposta = risposta.Replace("\\\n", "");
+			risposta = risposta.Replace("\\n", "");
 			string[] tutt = risposta.Split(';');
 
 			// TODO  /n e controlla trailing spazio

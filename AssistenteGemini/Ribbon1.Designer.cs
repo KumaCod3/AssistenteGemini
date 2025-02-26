@@ -50,6 +50,7 @@ namespace AssistenteGemini
 			this.button7 = this.Factory.CreateRibbonButton();
 			this.button8 = this.Factory.CreateRibbonButton();
 			this.button9 = this.Factory.CreateRibbonButton();
+			this.button10 = this.Factory.CreateRibbonButton();
 			this.tab1.SuspendLayout();
 			this.group1.SuspendLayout();
 			this.group2.SuspendLayout();
@@ -86,6 +87,7 @@ namespace AssistenteGemini
 			// group3
 			// 
 			this.group3.Items.Add(this.button6);
+			this.group3.Items.Add(this.button10);
 			this.group3.Label = "Riscrivi";
 			this.group3.Name = "group3";
 			// 
@@ -177,6 +179,14 @@ namespace AssistenteGemini
 			this.button9.ShowImage = true;
 			this.button9.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click);
 			// 
+			// button10
+			// 
+			this.button10.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+			this.button10.Label = "Modifica Prompt";
+			this.button10.Name = "button10";
+			this.button10.ShowImage = true;
+			this.button10.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.modProm_Click);
+			// 
 			// Ribbon1
 			// 
 			this.Name = "Ribbon1";
@@ -214,6 +224,7 @@ namespace AssistenteGemini
 		internal Microsoft.Office.Tools.Ribbon.RibbonButton button7;
 		internal Microsoft.Office.Tools.Ribbon.RibbonButton button8;
 		internal Microsoft.Office.Tools.Ribbon.RibbonButton button9;
+		internal Microsoft.Office.Tools.Ribbon.RibbonButton button10;
 	}
 
 	partial class ThisRibbonCollection
