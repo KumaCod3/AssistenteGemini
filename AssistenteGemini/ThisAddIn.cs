@@ -42,7 +42,7 @@ namespace AssistenteGemini
 
 		#endregion
 
-		private string GEMINI_API_KEY = "ddd";
+		private string GEMINI_API_KEY = "fff";
 
 		public async System.Threading.Tasks.Task<string> SendRequestAndGetResponse(string userInput)
 		{
