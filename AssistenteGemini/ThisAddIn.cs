@@ -1,13 +1,6 @@
-﻿//using System.Xml.Linq;
-//using Word = Microsoft.Office.Interop.Word;
-//using Office = Microsoft.Office.Core;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Net.Http.Headers;
-//using System.Collections.Generic;
-//using System.Linq;
 using System.Text;
-//using Microsoft.Office.Interop.Word; // Già presente, assicura di averlo
-//using System.Windows.Forms; // Per MessageBox
 
 
 namespace AssistenteGemini
@@ -42,7 +35,7 @@ namespace AssistenteGemini
 
 		#endregion
 
-		private string GEMINI_API_KEY = "fff";
+		private string GEMINI_API_KEY = "ddd";
 
 		public async System.Threading.Tasks.Task<string> SendRequestAndGetResponse(string userInput)
 		{

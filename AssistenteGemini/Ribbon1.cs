@@ -1,11 +1,16 @@
 ﻿using Microsoft.Office.Tools.Ribbon;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace AssistenteGemini
 {
 	public partial class Ribbon1
 	{
+		public static List<string> prompts = new List<string>();
 
-		public static string promptMod = "Riscrivi il testo con uno stile ricercato utilizzando termini desueti e arcaici. ";
+
+		public static string promptMod;
 		private void Ribbon1_Load(object sender, RibbonUIEventArgs e)
 		{
 
@@ -43,10 +48,6 @@ namespace AssistenteGemini
 			risposta = risposta.Replace("\\n", "");
 			string[] tutt = risposta.Split(';');
 
-			// TODO  /n e controlla trailing spazio
-
-
-
 			this.button7.Label = tutt[0];
 			this.button8.Label = tutt[1];
 			this.button9.Label = tutt[2];
@@ -57,5 +58,47 @@ namespace AssistenteGemini
 			ThisAddIn.inserisciTesto(bottone.Label);
 		}
 
+		public static void aggiungiPrompt(string pr)
+		{
+			promptMod = pr;
+			if (prompts.Count < 6)
+			{
+				prompts.Add(pr);
+			}
+		}
+
+
+		public void inizia()
+		{
+			string path = "..\\prompp.txt";
+
+			// To read a text file line by line 
+			if (File.Exists(path))
+			{
+				// Store each line in array of strings 
+				string[] lines = File.ReadAllLines(path);
+
+				foreach (string ln in lines)
+				{
+					prompts.Add(ln);
+				}
+
+			}
+			promptMod = prompts[0];
+
+			// Open the file to read from.
+			//string readText = File.ReadAllText(path);
+
+		}
+		public void bakupPrompt()
+		{
+			string path = "..\\prompp.txt";
+			string createText = "";
+			foreach (string ln in prompts)
+			{
+				createText = createText + ln + Environment.NewLine;
+			}
+			File.WriteAllText(path, createText);
+		}
 	}
 }
