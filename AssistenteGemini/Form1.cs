@@ -1,9 +1,13 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace AssistenteGemini
 {
 	public partial class Form1: Form
 	{
+		private int selezionato = -1;
+		private List<RadioButton> radioBB = new List<RadioButton>();
 		public Form1()
 		{
 			InitializeComponent();
@@ -19,7 +23,9 @@ namespace AssistenteGemini
 				radioButton.Location = loc;
 				radioButton.Size = new System.Drawing.Size(350, 40);
 				radioButton.AutoSize = false;
+				radioButton.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
 				loc.Y = loc.Y + 40;
+				radioBB.Add(radioButton);
 			}
 
 		}
@@ -29,16 +35,53 @@ namespace AssistenteGemini
 			string x = "";
 			x = this.textBox1.Text;
 			Ribbon1.aggiungiPrompt(x);
+			Ribbon1.bakupPrompt();
 			this.Close();
 		}
 
-		private void selezPromp(int x)
+		private void selez_Click(object sender, System.EventArgs e)
 		{
-			Ribbon1.promptMod = Ribbon1.prompts[x];
+			if (selezionato != -1)
+			{
+				Ribbon1.promptMod = Ribbon1.prompts[selezionato];
+				this.Close();
+			}
+		}
+
+		private void elim_Click(object sender, System.EventArgs e)
+		{
+			if (selezionato != -1)
+			{
+				Ribbon1.prompts.RemoveAt(selezionato);
+				Form1 mod = new Form1();
+				mod.Visible = true;
+				mod.Activate();
+				this.Close();
+				Ribbon1.bakupPrompt();
+			}
+		}
+
+		void radioButton_CheckedChanged(object sender, EventArgs e)
+		{
+			RadioButton rb = sender as RadioButton;
+
+			if (rb == null)
+			{
+				MessageBox.Show("Sender is not a RadioButton");
+				return;
+			}
+
+			// Ensure that the RadioButton.Checked property
+			// changed to true.
+			if (rb.Checked)
+			{
+				// Keep track of the selected RadioButton by saving a reference
+				// to it.
+				selezionato = radioBB.IndexOf(rb);
+			}
 		}
 
 	}
 }
 // TODO mettere a capo quando inserisci testo se càera
-// fare funzionamento radioButton
 // metti inserimento ApyK

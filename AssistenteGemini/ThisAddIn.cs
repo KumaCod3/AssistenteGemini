@@ -35,7 +35,7 @@ namespace AssistenteGemini
 
 		#endregion
 
-		private string GEMINI_API_KEY = "ddd";
+		private string GEMINI_API_KEY = "";
 
 		public async System.Threading.Tasks.Task<string> SendRequestAndGetResponse(string userInput)
 		{
@@ -84,16 +84,22 @@ namespace AssistenteGemini
 		public static string chiediAgemini(string domanda)
 		{
 			string g = "" + domanda;
-			Microsoft.Office.Interop.Word.Selection currentSelection = _sinstance.Application.Selection;
-			if (_sinstance.Application.Options.ReplaceSelection)
+			string ss = "";
+			if (_sinstance.Application.Selection.Text.Length > 1)
 			{
-				object direction = Microsoft.Office.Interop.Word.WdCollapseDirection.wdCollapseStart;
-				g = g + currentSelection.Text;
 
+				Microsoft.Office.Interop.Word.Selection currentSelection = _sinstance.Application.Selection;
+				if (_sinstance.Application.Options.ReplaceSelection)
+				{
+					object direction = Microsoft.Office.Interop.Word.WdCollapseDirection.wdCollapseStart;
+					g = g + currentSelection.Text;
+
+				}
+
+				ss = _sinstance.SendRequestAndGetResponse(g).Result;
 			}
-
-			string ss = _sinstance.SendRequestAndGetResponse(g).Result;
 			return ss;
+
 		}
 
 		public static void inserisciTesto(string testo)

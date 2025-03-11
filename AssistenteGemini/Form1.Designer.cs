@@ -74,6 +74,7 @@ namespace AssistenteGemini
 			this.button2.TabIndex = 3;
 			this.button2.Text = "Usa";
 			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.selez_Click);
 			// 
 			// button3
 			// 
@@ -83,6 +84,7 @@ namespace AssistenteGemini
 			this.button3.TabIndex = 4;
 			this.button3.Text = "Cancella";
 			this.button3.UseVisualStyleBackColor = true;
+			this.button3.Click += new System.EventHandler(this.elim_Click);
 			// 
 			// Form1
 			// 

@@ -20,18 +20,21 @@ namespace AssistenteGemini
 		{
 			string domanda = "trova cinque sinonimi per la seguente parola, non mettere commenti, solo le singole parole, separate da ;";
 			string risposta = ThisAddIn.chiediAgemini(domanda);
-			risposta = risposta.Replace("\\n", "");
-			string[] tutt = risposta.Split(';');
+			if (risposta.Length > 0)
+			{
+				risposta = risposta.Replace("\\n", "");
+				string[] tutt = risposta.Split(';');
 
-			// TODO  /n e controlla trailing spazio
+				// TODO  /n e controlla trailing spazio
 
 
 
-			this.button1.Label = tutt[0];
-			this.button2.Label = tutt[1];
-			this.button3.Label = tutt[2];
-			this.button4.Label = tutt[3];
-			this.button5.Label = tutt[4];
+				this.button1.Label = tutt[0];
+				this.button2.Label = tutt[1];
+				this.button3.Label = tutt[2];
+				this.button4.Label = tutt[3];
+				this.button5.Label = tutt[4];
+			}
 		}
 
 		private void modProm_Click(object sender, RibbonControlEventArgs e)
@@ -45,12 +48,16 @@ namespace AssistenteGemini
 		{
 			string domanda = promptMod + " Proponi 3 alternative il più possibile diversificate in termini di lessico, ma sempre rispettando le linee guida iniziali. Fornisci solo le alternative senza titoli, introduzioni o spiegazioni o elenchi, separale con  ; ";
 			string risposta = ThisAddIn.chiediAgemini(domanda);
-			risposta = risposta.Replace("\\n", "");
-			string[] tutt = risposta.Split(';');
+			if (risposta.Length > 0)
+			{
 
-			this.button7.Label = tutt[0];
-			this.button8.Label = tutt[1];
-			this.button9.Label = tutt[2];
+				risposta = risposta.Replace("\\n", "");
+				string[] tutt = risposta.Split(';');
+
+				this.button7.Label = tutt[0];
+				this.button8.Label = tutt[1];
+				this.button9.Label = tutt[2];
+			}
 		}
 		private void scelto_Click(object sender, RibbonControlEventArgs e)
 		{
@@ -90,7 +97,7 @@ namespace AssistenteGemini
 			//string readText = File.ReadAllText(path);
 
 		}
-		public void bakupPrompt()
+		public static void bakupPrompt()
 		{
 			string path = "..\\prompp.txt";
 			string createText = "";
