@@ -2,18 +2,34 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows.Forms;
 
 namespace AssistenteGemini
 {
-	public partial class Ribbon1
+	public partial class GeminiAssistant
 	{
 		public static List<string> prompts = new List<string>();
 
 
 		public static string promptMod;
+		public static string myK = "";
 		private void Ribbon1_Load(object sender, RibbonUIEventArgs e)
 		{
 
+		}
+
+		internal static void bakupK()
+		{
+			string path = "..\\beeK.txt";
+			string createText = myK;
+			foreach (string ln in prompts)
+				File.WriteAllText(path, createText);
+		}
+
+		internal static void modK(string x)
+		{
+			myK = x;
+			// TODO aaaaaa riavvia tutto con k
 		}
 
 		private void sinonimi_Click(object sender, RibbonControlEventArgs e)
@@ -30,10 +46,14 @@ namespace AssistenteGemini
 
 
 				this.button1.Label = tutt[0];
-				this.button2.Label = tutt[1];
-				this.button3.Label = tutt[2];
-				this.button4.Label = tutt[3];
-				this.button5.Label = tutt[4];
+				if (tutt.Length > 1)
+					this.button2.Label = tutt[1];
+				if (tutt.Length > 2)
+					this.button3.Label = tutt[2];
+				if (tutt.Length > 3)
+					this.button4.Label = tutt[3];
+				if (tutt.Length > 4)
+					this.button5.Label = tutt[4];
 			}
 		}
 
@@ -44,10 +64,26 @@ namespace AssistenteGemini
 			mod.Activate();
 		}
 
+		private void modK_Click(object sender, RibbonControlEventArgs e)
+		{
+			FormK mod = new FormK();
+			mod.Visible = true;
+			mod.Activate();
+		}
+
 		private void riscrivi_Click(object sender, RibbonControlEventArgs e)
 		{
-			string domanda = promptMod + " Proponi 3 alternative il più possibile diversificate in termini di lessico, ma sempre rispettando le linee guida iniziali. Fornisci solo le alternative senza titoli, introduzioni o spiegazioni o elenchi, separale con  ; ";
+			string domanda = promptMod + " Proponi 3 alternative il più possibile diversificate in termini di lessico, ma sempre rispettando le linee guida iniziali. Fornisci solo le alternative senza titoli, introduzioni o spiegazioni o elenchi, e separale con  ;  ";
 			string risposta = ThisAddIn.chiediAgemini(domanda);
+
+
+			//		string suggerimentiGemini = await Globals.ThisAddIn.VerificaGrammaticaGeminiAsync(testoDocumento); // o la tua funzione API
+
+			// AGGIUNGI QUESTO BLOCCO TEMPORANEO PER IL DEBUG:
+			MessageBox.Show(risposta, "Testo Grezzo da Gemini (Verifica A Capi)");
+
+
+
 			if (risposta.Length > 0)
 			{
 
@@ -55,8 +91,10 @@ namespace AssistenteGemini
 				string[] tutt = risposta.Split(';');
 
 				this.button7.Label = tutt[0];
-				this.button8.Label = tutt[1];
-				this.button9.Label = tutt[2];
+				if (tutt.Length > 1)
+					this.button8.Label = tutt[1];
+				if (tutt.Length > 2)
+					this.button9.Label = tutt[2];
 			}
 		}
 		private void scelto_Click(object sender, RibbonControlEventArgs e)
@@ -77,13 +115,14 @@ namespace AssistenteGemini
 
 		public void inizia()
 		{
-			string path = "..\\prompp.txt";
+			string pathP = "..\\prompp.txt";
+			string pathK = "..\\beeK.txt";
 
 			// To read a text file line by line 
-			if (File.Exists(path))
+			if (File.Exists(pathP))
 			{
 				// Store each line in array of strings 
-				string[] lines = File.ReadAllLines(path);
+				string[] lines = File.ReadAllLines(pathP);
 
 				foreach (string ln in lines)
 				{
@@ -93,9 +132,11 @@ namespace AssistenteGemini
 			}
 			promptMod = prompts[0];
 
-			// Open the file to read from.
-			//string readText = File.ReadAllText(path);
-
+			if (File.Exists(pathK))
+			{
+				string k = File.ReadAllText(pathK);
+				myK = k;
+			}
 		}
 		public static void bakupPrompt()
 		{

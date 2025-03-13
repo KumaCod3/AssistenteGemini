@@ -1,7 +1,8 @@
 ﻿using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace AssistenteGemini
 {
@@ -35,10 +36,9 @@ namespace AssistenteGemini
 
 		#endregion
 
-		private string GEMINI_API_KEY = "";
-
 		public async System.Threading.Tasks.Task<string> SendRequestAndGetResponse(string userInput)
 		{
+
 			string jsonBody = $@"{{
 				""contents"": [
 					{{
@@ -62,13 +62,14 @@ namespace AssistenteGemini
 				]
 			}}";
 
-			var request = new HttpRequestMessage(HttpMethod.Post, $"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={GEMINI_API_KEY}");
+			var request = new HttpRequestMessage(HttpMethod.Post, $"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={GeminiAssistant.myK}");
 			request.Content = new StringContent(jsonBody, Encoding.UTF8);
-			request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+			request.Content.Headers.ContentType = new MediaTypeHeaderValue("text/plain");
 
 
 			HttpClient httpClient = new HttpClient();
 			var response = await httpClient.SendAsync(request).ConfigureAwait(false);
+
 
 			if (response.IsSuccessStatusCode)
 			{
@@ -87,6 +88,8 @@ namespace AssistenteGemini
 			string ss = "";
 			if (_sinstance.Application.Selection.Text.Length > 1)
 			{
+				if (Regex.Match(_sinstance.Application.Selection.Text, "\\r").Success)
+					MessageBox.Show("This is true");
 
 				Microsoft.Office.Interop.Word.Selection currentSelection = _sinstance.Application.Selection;
 				if (_sinstance.Application.Options.ReplaceSelection)
@@ -118,7 +121,8 @@ namespace AssistenteGemini
 			// Test to see if selection is an insertion point.
 			if (currentSelection.Type == Microsoft.Office.Interop.Word.WdSelectionType.wdSelectionIP)
 			{
-				currentSelection.TypeText(testo);
+				//currentSelection.TypeText(testo);
+				currentSelection.Text = testo;
 			}
 			else
 				if (currentSelection.Type == Microsoft.Office.Interop.Word.WdSelectionType.wdSelectionNormal)
@@ -130,13 +134,14 @@ namespace AssistenteGemini
 					currentSelection.Delete(ref direction);
 
 				}
-				currentSelection.TypeText(testo);
+				//currentSelection.TypeText(testo);
+				currentSelection.Text = testo;
 			}
 			else
 			{
 			}
 
-			// Restore the user's Overtype selection
+			// Restore the user's Overtype selection	
 			_sinstance.Application.Options.Overtype = userOvertype;
 
 		}

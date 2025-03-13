@@ -11,11 +11,11 @@ namespace AssistenteGemini
 		public Form1()
 		{
 			InitializeComponent();
-			string oldPrompt = Ribbon1.promptMod;
+			string oldPrompt = GeminiAssistant.promptMod;
 			this.textBox1.Text = oldPrompt;
 			System.Drawing.Point loc = new System.Drawing.Point(358, 20);
 
-			foreach (string pr in Ribbon1.prompts)
+			foreach (string pr in GeminiAssistant.prompts)
 			{
 				RadioButton radioButton = new RadioButton();
 				this.Controls.Add(radioButton);
@@ -34,8 +34,8 @@ namespace AssistenteGemini
 		{
 			string x = "";
 			x = this.textBox1.Text;
-			Ribbon1.aggiungiPrompt(x);
-			Ribbon1.bakupPrompt();
+			GeminiAssistant.aggiungiPrompt(x);
+			GeminiAssistant.bakupPrompt();
 			this.Close();
 		}
 
@@ -43,7 +43,7 @@ namespace AssistenteGemini
 		{
 			if (selezionato != -1)
 			{
-				Ribbon1.promptMod = Ribbon1.prompts[selezionato];
+				GeminiAssistant.promptMod = GeminiAssistant.prompts[selezionato];
 				this.Close();
 			}
 		}
@@ -52,12 +52,12 @@ namespace AssistenteGemini
 		{
 			if (selezionato != -1)
 			{
-				Ribbon1.prompts.RemoveAt(selezionato);
+				GeminiAssistant.prompts.RemoveAt(selezionato);
 				Form1 mod = new Form1();
 				mod.Visible = true;
 				mod.Activate();
 				this.Close();
-				Ribbon1.bakupPrompt();
+				GeminiAssistant.bakupPrompt();
 			}
 		}
 
