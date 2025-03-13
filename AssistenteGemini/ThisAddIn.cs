@@ -1,7 +1,6 @@
 ﻿using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace AssistenteGemini
@@ -84,13 +83,16 @@ namespace AssistenteGemini
 
 		public static string chiediAgemini(string domanda)
 		{
+			if (GeminiAssistant.myK.Length == 0)
+			{
+				MessageBox.Show("You need to set your Gemini API key first!");
+				return "";
+			}
+
 			string g = "" + domanda;
 			string ss = "";
 			if (_sinstance.Application.Selection.Text.Length > 1)
 			{
-				if (Regex.Match(_sinstance.Application.Selection.Text, "\\r").Success)
-					MessageBox.Show("This is true");
-
 				Microsoft.Office.Interop.Word.Selection currentSelection = _sinstance.Application.Selection;
 				if (_sinstance.Application.Options.ReplaceSelection)
 				{

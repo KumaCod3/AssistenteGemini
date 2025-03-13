@@ -29,7 +29,6 @@ namespace AssistenteGemini
 		internal static void modK(string x)
 		{
 			myK = x;
-			// TODO aaaaaa riavvia tutto con k
 		}
 
 		private void sinonimi_Click(object sender, RibbonControlEventArgs e)
@@ -38,6 +37,11 @@ namespace AssistenteGemini
 			string risposta = ThisAddIn.chiediAgemini(domanda);
 			if (risposta.Length > 0)
 			{
+				if (risposta.Equals("Error: BadRequest - Bad Request"))
+				{
+					MessageBox.Show("Bad Request, may be your Gemini API key?");
+					return;
+				}
 				risposta = risposta.Replace("\\n", "");
 				string[] tutt = risposta.Split(';');
 
@@ -76,14 +80,6 @@ namespace AssistenteGemini
 			string domanda = promptMod + " Proponi 3 alternative il più possibile diversificate in termini di lessico, ma sempre rispettando le linee guida iniziali. Fornisci solo le alternative senza titoli, introduzioni o spiegazioni o elenchi, e separale con  ;  ";
 			string risposta = ThisAddIn.chiediAgemini(domanda);
 
-
-			//		string suggerimentiGemini = await Globals.ThisAddIn.VerificaGrammaticaGeminiAsync(testoDocumento); // o la tua funzione API
-
-			// AGGIUNGI QUESTO BLOCCO TEMPORANEO PER IL DEBUG:
-			MessageBox.Show(risposta, "Testo Grezzo da Gemini (Verifica A Capi)");
-
-
-
 			if (risposta.Length > 0)
 			{
 
@@ -100,7 +96,7 @@ namespace AssistenteGemini
 		private void scelto_Click(object sender, RibbonControlEventArgs e)
 		{
 			RibbonButton bottone = (RibbonButton)sender;
-			ThisAddIn.inserisciTesto(bottone.Label);
+			ThisAddIn.inserisciTesto(bottone.Label + "\r");
 		}
 
 		public static void aggiungiPrompt(string pr)
