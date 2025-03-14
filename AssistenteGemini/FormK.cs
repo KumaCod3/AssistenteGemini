@@ -9,6 +9,7 @@ namespace AssistenteGemini
 			InitializeComponent();
 			string myK = GeminiAssistant.myK;
 			this.textBox1.Text = myK;
+			
 		}
 
 		private void modK_Click(object sender, System.EventArgs e)
