@@ -38,24 +38,24 @@ namespace AssistenteGemini
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeminiAssistant));
 			this.tab1 = this.Factory.CreateRibbonTab();
-			this.group1 = this.Factory.CreateRibbonGroup();
 			this.group2 = this.Factory.CreateRibbonGroup();
-			this.group3 = this.Factory.CreateRibbonGroup();
+			this.button11 = this.Factory.CreateRibbonButton();
+			this.group1 = this.Factory.CreateRibbonGroup();
 			this.adatta = this.Factory.CreateRibbonButton();
 			this.button1 = this.Factory.CreateRibbonButton();
 			this.button2 = this.Factory.CreateRibbonButton();
 			this.button3 = this.Factory.CreateRibbonButton();
 			this.button4 = this.Factory.CreateRibbonButton();
 			this.button5 = this.Factory.CreateRibbonButton();
+			this.group3 = this.Factory.CreateRibbonGroup();
 			this.button6 = this.Factory.CreateRibbonButton();
 			this.button10 = this.Factory.CreateRibbonButton();
-			this.button7 = this.Factory.CreateRibbonButton();
 			this.button8 = this.Factory.CreateRibbonButton();
+			this.button7 = this.Factory.CreateRibbonButton();
 			this.button9 = this.Factory.CreateRibbonButton();
-			this.button11 = this.Factory.CreateRibbonButton();
 			this.tab1.SuspendLayout();
-			this.group1.SuspendLayout();
 			this.group2.SuspendLayout();
+			this.group1.SuspendLayout();
 			this.group3.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -68,6 +68,21 @@ namespace AssistenteGemini
 			this.tab1.Label = "Gemini Assistant";
 			this.tab1.Name = "tab1";
 			// 
+			// group2
+			// 
+			this.group2.Items.Add(this.button11);
+			this.group2.Label = "apiK";
+			this.group2.Name = "group2";
+			// 
+			// button11
+			// 
+			this.button11.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+			this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
+			this.button11.Label = "myAPIk";
+			this.button11.Name = "button11";
+			this.button11.ShowImage = true;
+			this.button11.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.modK_Click);
+			// 
 			// group1
 			// 
 			this.group1.Items.Add(this.adatta);
@@ -78,22 +93,6 @@ namespace AssistenteGemini
 			this.group1.Items.Add(this.button5);
 			this.group1.Label = "Sinonimi";
 			this.group1.Name = "group1";
-			// 
-			// group2
-			// 
-			this.group2.Items.Add(this.button11);
-			this.group2.Label = "apiK";
-			this.group2.Name = "group2";
-			// 
-			// group3
-			// 
-			this.group3.Items.Add(this.button6);
-			this.group3.Items.Add(this.button10);
-			this.group3.Items.Add(this.button8);
-			this.group3.Items.Add(this.button7);
-			this.group3.Items.Add(this.button9);
-			this.group3.Label = "Riscrivi";
-			this.group3.Name = "group3";
 			// 
 			// adatta
 			// 
@@ -149,6 +148,16 @@ namespace AssistenteGemini
 			this.button5.ShowImage = true;
 			this.button5.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click1);
 			// 
+			// group3
+			// 
+			this.group3.Items.Add(this.button6);
+			this.group3.Items.Add(this.button10);
+			this.group3.Items.Add(this.button8);
+			this.group3.Items.Add(this.button7);
+			this.group3.Items.Add(this.button9);
+			this.group3.Label = "Riscrivi";
+			this.group3.Name = "group3";
+			// 
 			// button6
 			// 
 			this.button6.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -167,15 +176,6 @@ namespace AssistenteGemini
 			this.button10.ShowImage = true;
 			this.button10.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.modProm_Click);
 			// 
-			// button7
-			// 
-			this.button7.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-			this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
-			this.button7.Label = "Option 1";
-			this.button7.Name = "button7";
-			this.button7.ShowImage = true;
-			this.button7.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click2);
-			// 
 			// button8
 			// 
 			this.button8.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -184,6 +184,15 @@ namespace AssistenteGemini
 			this.button8.Name = "button8";
 			this.button8.ShowImage = true;
 			this.button8.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click2);
+			// 
+			// button7
+			// 
+			this.button7.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+			this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
+			this.button7.Label = "Option 1";
+			this.button7.Name = "button7";
+			this.button7.ShowImage = true;
+			this.button7.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click2);
 			// 
 			// button9
 			// 
@@ -194,15 +203,6 @@ namespace AssistenteGemini
 			this.button9.ShowImage = true;
 			this.button9.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click2);
 			// 
-			// button11
-			// 
-			this.button11.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-			this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
-			this.button11.Label = "myAPIk";
-			this.button11.Name = "button11";
-			this.button11.ShowImage = true;
-			this.button11.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.modK_Click);
-			// 
 			// GeminiAssistant
 			// 
 			this.Name = "GeminiAssistant";
@@ -211,10 +211,10 @@ namespace AssistenteGemini
 			this.Load += new Microsoft.Office.Tools.Ribbon.RibbonUIEventHandler(this.Ribbon1_Load);
 			this.tab1.ResumeLayout(false);
 			this.tab1.PerformLayout();
-			this.group1.ResumeLayout(false);
-			this.group1.PerformLayout();
 			this.group2.ResumeLayout(false);
 			this.group2.PerformLayout();
+			this.group1.ResumeLayout(false);
+			this.group1.PerformLayout();
 			this.group3.ResumeLayout(false);
 			this.group3.PerformLayout();
 			this.ResumeLayout(false);
