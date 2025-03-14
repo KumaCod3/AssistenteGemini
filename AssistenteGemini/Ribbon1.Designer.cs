@@ -111,7 +111,7 @@ namespace AssistenteGemini
 			this.button1.Label = "Option 1";
 			this.button1.Name = "button1";
 			this.button1.ShowImage = true;
-			this.button1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click);
+			this.button1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click1);
 			// 
 			// button2
 			// 
@@ -120,7 +120,7 @@ namespace AssistenteGemini
 			this.button2.Label = "Option 2";
 			this.button2.Name = "button2";
 			this.button2.ShowImage = true;
-			this.button2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click);
+			this.button2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click1);
 			// 
 			// button3
 			// 
@@ -129,7 +129,7 @@ namespace AssistenteGemini
 			this.button3.Label = "Option 3";
 			this.button3.Name = "button3";
 			this.button3.ShowImage = true;
-			this.button3.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click);
+			this.button3.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click1);
 			// 
 			// button4
 			// 
@@ -138,7 +138,7 @@ namespace AssistenteGemini
 			this.button4.Label = "Option 4";
 			this.button4.Name = "button4";
 			this.button4.ShowImage = true;
-			this.button4.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click);
+			this.button4.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click1);
 			// 
 			// button5
 			// 
@@ -147,7 +147,7 @@ namespace AssistenteGemini
 			this.button5.Label = "Option 5";
 			this.button5.Name = "button5";
 			this.button5.ShowImage = true;
-			this.button5.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click);
+			this.button5.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click1);
 			// 
 			// button6
 			// 
@@ -174,7 +174,7 @@ namespace AssistenteGemini
 			this.button7.Label = "Option 1";
 			this.button7.Name = "button7";
 			this.button7.ShowImage = true;
-			this.button7.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click);
+			this.button7.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click2);
 			// 
 			// button8
 			// 
@@ -183,7 +183,7 @@ namespace AssistenteGemini
 			this.button8.Label = "Option 2";
 			this.button8.Name = "button8";
 			this.button8.ShowImage = true;
-			this.button8.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click);
+			this.button8.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click2);
 			// 
 			// button9
 			// 
@@ -192,7 +192,7 @@ namespace AssistenteGemini
 			this.button9.Label = "Option 3";
 			this.button9.Name = "button9";
 			this.button9.ShowImage = true;
-			this.button9.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click);
+			this.button9.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.scelto_Click2);
 			// 
 			// button11
 			// 

@@ -22,8 +22,7 @@ namespace AssistenteGemini
 		{
 			string path = "..\\beeK.txt";
 			string createText = myK;
-			foreach (string ln in prompts)
-				File.WriteAllText(path, createText);
+			File.WriteAllText(path, createText);
 		}
 
 		internal static void modK(string x)
@@ -44,9 +43,6 @@ namespace AssistenteGemini
 				}
 				risposta = risposta.Replace("\\n", "");
 				string[] tutt = risposta.Split(';');
-
-				// TODO  /n e controlla trailing spazio
-
 
 
 				this.button1.Label = tutt[0];
@@ -93,12 +89,17 @@ namespace AssistenteGemini
 					this.button9.Label = tutt[2];
 			}
 		}
-		private void scelto_Click(object sender, RibbonControlEventArgs e)
+		private void scelto_Click1(object sender, RibbonControlEventArgs e)
+		{
+			RibbonButton bottone = (RibbonButton)sender;
+			ThisAddIn.inserisciTesto(bottone.Label);
+		}
+
+		private void scelto_Click2(object sender, RibbonControlEventArgs e)
 		{
 			RibbonButton bottone = (RibbonButton)sender;
 			ThisAddIn.inserisciTesto(bottone.Label + "\r");
 		}
-
 		public static void aggiungiPrompt(string pr)
 		{
 			promptMod = pr;
@@ -124,9 +125,9 @@ namespace AssistenteGemini
 				{
 					prompts.Add(ln);
 				}
-
+				promptMod = prompts[0];
 			}
-			promptMod = prompts[0];
+
 
 			if (File.Exists(pathK))
 			{
