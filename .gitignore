@@ -186,6 +186,7 @@ _pkginfo.txt
 
 # Others
 ClientBin/
+GeminiAssistantKC/
 ~$*
 *~
 *.dbmdl
