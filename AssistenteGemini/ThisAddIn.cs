@@ -148,6 +148,14 @@ namespace AssistenteGemini
 
 		}
 
+		public static void debugga(string s)
+		{
+			MessageBox.Show(s);
+		}
+		public static void debugga()
+		{
+			debugga("prova");
+		}
 	}
 }
 
