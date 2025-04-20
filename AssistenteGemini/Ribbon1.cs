@@ -32,7 +32,7 @@ namespace AssistenteGemini
 
 		private void sinonimi_Click(object sender, RibbonControlEventArgs e)
 		{
-			string domanda = "trova cinque sinonimi per la seguente parola, non mettere commenti, solo le singole parole, separate da ;";
+			string domanda = "trova cinque sinonimi per la seguente parola, non mettere commenti, solo le singole parole, separate da ; e mantenendo le maiuscole se e dove sono presenti ";
 			string risposta = ThisAddIn.chiediAgemini(domanda);
 			if (risposta.Length > 0)
 			{
@@ -73,7 +73,7 @@ namespace AssistenteGemini
 
 		private void riscrivi_Click(object sender, RibbonControlEventArgs e)
 		{
-			string domanda = promptMod + " Proponi 3 alternative il più possibile diversificate in termini di lessico, ma sempre rispettando le linee guida iniziali. Fornisci solo le alternative senza titoli, introduzioni o spiegazioni o elenchi, e separale con  ;  ";
+			string domanda = promptMod + " Proponi 3 alternative il più possibile diversificate in termini di lessico, ma sempre rispettando le linee guida iniziali. Fornisci solo le alternative senza titoli, introduzioni o spiegazioni o elenchi, e separale con  ;  e mantenendo le maiuscole se e dove sono presenti ";
 			string risposta = ThisAddIn.chiediAgemini(domanda);
 
 			if (risposta.Length > 0)
